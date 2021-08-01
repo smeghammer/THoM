@@ -1,0 +1,41 @@
+#library "myscripts.acs"
+#include "zcommon.acs"
+
+
+/*
+SCRIPT OPEN:
+---------
+raise bridges in lava room:
+*/
+script 100 OPEN{
+	
+}
+
+
+/*
+SCRIPT 1:
+---------
+*/
+script 1 (void){
+	Floor_LowerByValue(1,12,120);
+	Delay(210);
+	Floor_RaiseByValue(1,12,120);
+}
+
+script 2 (int impaledCorpsesToGo, int spawnSpotId){
+	/* remove the impaled corpses: */
+	Thing_Remove(impaledCorpsesToGo);
+	
+	/* TEST - Replace with a randomised monster (get stronger as progress?) at relevant spawnspot */
+	int thingsToSpawn[5] = {T_ZOMBIE,T_IMP,T_LOSTSOUL,T_SHOTGUY,T_CHAINGUY};
+	
+	Thing_Spawn(spawnSpotId, thingsToSpawn[Random(0,4)], 64);
+	
+	/* TODO: have multiple lines that trigger release of staked corpses - have counter on a complex array t okeep track of whether a line has been triggered. I've done this before somewhere... */
+	
+	
+	
+	
+	
+}
+

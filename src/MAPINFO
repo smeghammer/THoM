@@ -1,0 +1,14 @@
+episode MAP15
+{
+	name="The Harvesting of Men"
+	key="r"
+}
+
+map MAP15 "The Harvesting of Men"
+{
+	levelnum=15
+	next="MAP16"
+	sky1 = "DRTYSKY9"
+	music = "D_EVIL"
+	NoJump
+}
