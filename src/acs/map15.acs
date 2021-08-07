@@ -1,13 +1,20 @@
-#library "myscripts.acs"
+#library "map15.acs"
 #include "zcommon.acs"
-
 
 /*
 SCRIPT OPEN:
 ---------
-raise bridges in lava room:
 */
+
 script 100 OPEN{
+	/* set all fences blocking */
+	int blockingfences[4] = {1,2,3,4};
+	int blockingfencescount = 4;
+	
+	for(int a=0;a<blockingfencescount;a++){
+		acs_execute(3,0,blockingfences[a],1);
+		delay(1);
+	}
 	
 }
 
@@ -31,11 +38,54 @@ script 2 (int impaledCorpsesToGo, int spawnSpotId){
 	
 	Thing_Spawn(spawnSpotId, thingsToSpawn[Random(0,4)], 64);
 	
-	/* TODO: have multiple lines that trigger release of staked corpses - have counter on a complex array t okeep track of whether a line has been triggered. I've done this before somewhere... */
+	/* TODO: have multiple lines that trigger release of staked corpses - have counter on a complex array to
+	keep track of whether a line has been triggered. I've done this before somewhere... */
+}
+
+/* steps and roof line blocking logic */
+script 3 (int lineid, int blockingstate,int checkheightmapid){
+	//log(s:"blockingstate");
+	print(s:"Player height: ",i:GetActorZ(0)/65536);
+	int heightcheckmap[3] = {0,-1012,-840};
 	
+	/* if activeheight is passed, we test actor height and only allow the line blocking toggle to run if the user is at this height (=/-16) */
+	int checkHeight = 1;
+	if(checkheightmapid > 0){	/* some lines don't need testing */
+		delay(1);
+		print(s:"checking height:",i:GetActorZ(0)/65536);
+		delay(1);
+		print(s:"height: ",i:(GetActorZ(0)/65536));
+		delay(1);
+		print(s:"passed index: : ",i:checkheightmapid);
+		delay(1);
+		print(s:"active height: ",i:heightcheckmap[checkheightmapid]);
+		checkHeight = 0;
+		if( 
+			(GetActorZ(0)/65536) <= heightcheckmap[checkheightmapid] + 32 
+			&& 
+			(GetActorZ(0)/65536) >= heightcheckmap[checkheightmapid] - 32
+			){
+		//if(  (heightcheckmap[checkheightmapid] - 32) <= (GetActorZ(0)/65536) <= (heightcheckmap[checkheightmapid] + 32) ){
+			print(s:"unblock");
+			checkHeight = 1;
+		}
+		else{
+			//debug
+			print(s:"don't unblock");
+		}
+	}
+
 	
-	
-	
-	
+	if(checkHeight == 1){
+		if(blockingstate == 1){
+			log(s:"blocking line ",i:lineid);
+			Line_SetBlocking(lineid,32,0);
+		}
+		else{
+			/* unblock */
+			log(s:"unblocking line ",i:lineid);
+			Line_SetBlocking(lineid,0,32);
+		}
+	}
 }
 
