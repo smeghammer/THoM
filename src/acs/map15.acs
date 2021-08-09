@@ -89,3 +89,19 @@ script 3 (int lineid, int blockingstate,int checkheightmapid){
 	}
 }
 
+/* scripted 3d door */
+script 4(int tag, int distance, int stayopen){
+	//use the same TID for soundspot
+	print(s:"triggering doors...");
+	floorandceiling_raisebyvalue(tag,12,distance);
+	ThingSound(40,"doors/dr1_open",127);
+	TagWait (tag);
+	print(s:"lowering door");
+	delay(72);
+	print(i:stayopen);
+	if(stayopen == 0){
+		floorandceiling_lowerbyvalue(tag,12,distance);
+		ThingSound(40,"doors/dr1_clos",127);
+	}
+}
+

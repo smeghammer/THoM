@@ -25,3 +25,51 @@ lineid		initial state		switcing lines (x,y)	notes
 
 
 
+TAGS:
+-----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+
+20
+21
+22		door #4 control sector
+23		door #5 control sector
+
+
+
+
+
+
+30
+31
+32
+
+34
+35		door #3	-> tag TID=
+36		door #4	-> tag TID=22
+37
+38
+39		door #5	-> tag TID=23
+40
+
+
+
+100
+101
+102
