@@ -44,7 +44,7 @@ script 2 (int impaledCorpsesToGo, int spawnSpotId){
 
 /* steps and roof line blocking logic */
 script 3 (int lineid, int blockingstate,int checkheightmapid){
-	//log(s:"blockingstate");
+	log(s:"blockingstate", i:blockingstate);
 	print(s:"Player height: ",i:GetActorZ(0)/65536);
 	int heightcheckmap[3] = {0,-1012,-840};
 	
@@ -78,28 +78,39 @@ script 3 (int lineid, int blockingstate,int checkheightmapid){
 	
 	if(checkHeight == 1){
 		if(blockingstate == 1){
-			log(s:"blocking line ",i:lineid);
+			//log(s:"blocking line ",i:lineid);
 			Line_SetBlocking(lineid,32,0);
 		}
 		else{
 			/* unblock */
-			log(s:"unblocking line ",i:lineid);
+			//log(s:"unblocking line ",i:lineid);
 			Line_SetBlocking(lineid,0,32);
 		}
 	}
 }
 
-/* scripted 3d door */
+/* scripted 3d door. Move control sector 'tag' by 'distance' to simulate doors with 3D sectors */
 script 4(int tag, int distance, int stayopen){
+	/* 
+	Prevent logical door height errors:
+	 - if 'stayopen', activators MUST be s1/w1 etc.
+	 - if repeatable door, need to check initial height and prevent retrigger until returned, otherwise
+	   the door can be lowered into the floor...
+	*/
+	
+	int _controlSectorStartingHeight = (GetSectorFloorZ(tag,0,0)/65536);
+	//print(s:"control sector floor height: ",i:_controlSectorStartingHeight);
+
 	//use the same TID for soundspot
-	print(s:"triggering doors...");
 	floorandceiling_raisebyvalue(tag,12,distance);
 	ThingSound(40,"doors/dr1_open",127);
-	TagWait (tag);
-	print(s:"lowering door");
-	delay(72);
-	print(i:stayopen);
-	if(stayopen == 0){
+	//TagWait (tag);
+	
+	delay(72);	//allow time to finish
+	//print(i:stayopen);
+	//print(s:"opened door height: ",i:((GetSectorFloorZ(tag,0,0)/65536)));
+	/* only trigger if the initial height == starting height. This prevents logical errors when triggering the door again if it has not returned to the correct height  */
+	if(stayopen == 0 && (GetSectorFloorZ(tag,0,0)/65536) == _controlSectorStartingHeight+distance){
 		floorandceiling_lowerbyvalue(tag,12,distance);
 		ThingSound(40,"doors/dr1_clos",127);
 	}
