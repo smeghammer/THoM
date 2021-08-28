@@ -25,7 +25,36 @@ lineid		initial state		switcing lines (x,y)	notes
 
 6			1					3424,544 (off)			fence above drop-in secret
 
+5 - fullbright switch face(s)	
 
+
+OTHER LINES:
+
+ACTION		TARGET TID (tele) 
+
+
+
+TIDs
+----
+7		3688,1632
+8		lower edge monster spawn spots (each alcove)
+9		lower edge monster spawn spots (each alcove)
+10		lower edge monster spawn spots (each alcove)
+11		lower edge monster spawn spots (each alcove)
+12		lower edge monster spawn spots (each alcove)
+13		lower edge monster spawn spots (each alcove)
+14		lower edge monster spawn spots (each alcove)
+15		lower edge monster spawn spots (each alcove)
+16		lower edge monster spawn spots (each alcove)
+17		lower edge monster spawn spots (each alcove)
+18		lower edge monster spawn spots (each alcove)
+40		sound thing - all scripted doors
+20		-2656,1440 (room by crates 2nd  level)
+100		-2528,2192, -1952,2536, -3376,544, -680,3040, 552,3104, etc. (spawn lower)
+101		-3048,2464 etc (outside fence arena floor)
+
+TID				CO-ORD			
+---------------------------------------------
 
 TAGS:
 -----
@@ -53,33 +82,63 @@ TAGS:
 22		door #4 control sector
 23		door #5 control sector
 24		door #19 control sector
+25		???
+26		door control sector
+27		door control sector
+28		26->28 door
+29		27->29 door
+30		?
+31		roof, floor 1
+32		window upper, green brick
+33		window upper, grey bigbrick
+34		?
+35		door -> tag TID=
+36		door -> tag TID=22
+37		?
+38		?
+39		door -> tag TID=23
+40		?
+41		door control sector tag -> 44
+42		door control sector tag -> 45
+43		door control sector tag -> 46
+44		3d floor/door
+45		3d floor/door
+46		3d floor/door
+47		door upper, grey bigbrik, 1 floor
+48		roof, floor 1 and 2
+49		roof, floor 2 only.
+50		door control sector tag for tag 51
+51		3d floor/door (-2192,-1568)
+52		3d floor door frame for tags 50/51 (-2184,-1568)
+53		wall upper to hide doortrak from 52 (-2192,-1536)
+54		upper window for 2 level block (-2088,-1776)
+55		upper door frame (-1848,-1568) Needs to be roof too
+56		upper door map sector (-1840,-1568)
+57		movable control sector for 56
+58		upper door map sector (-1840,-1568)
+59		movable control sector for 58
+60		?
+61		edge of second floor roof
+
+/* 'n' shaped room, 3 doors: */
+62		lh, map door sector
+63		control sector for 62, script moved.
+64		middle, map door sector
+65		control sector for 64, script moved.
+66		rh, map door sector
+67		control sector for 66, script moved.
+
+68		bars to level 3
 
 
+69		computer block
 
-
-
-30
-31
-32
-
-34
-35		door #3	-> tag TID=
-36		door #4	-> tag TID=22
-37
-38
-39		door #5	-> tag TID=23
-40
-41		dorr control sector tags -> 44
-42		dorr control sector tags -> 45
-43		dorr control sector tags -> 46
-CONTINUE HERE!!!!!!!!!!!!!!!
-
-
-
+70		upper level 3 bar access holder (along with 68)
 
 100
 101
 102
+103
 
 door logic:
 line/switch etc. triggers script with tag,dist arguments
@@ -87,12 +146,16 @@ line/switch etc. triggers script with tag,dist arguments
  - CONTROL SECTOR line type=160 (3d floor), map sector tag, flags 48,255
  
  doors:
+ flags=48 because we are using map linedef for textures 
  ---------------------------------------------------------------------------------------------------------
  control sector tag		control sector lineflags		map sector tag		activator flags		status
  38						160:35,1,48,255					35					80:4,0,38,64		OK
  41						160:44,1,48,255					44					80:4,0,44,64		OK
  42						160:45,1,48,255					45					80:4,0,45,64		OK
  43						160:46,1,48,255					46					80:4,0,46,64		OK
+ 26						160:28,1,48,255					28
+ 27						160:29,1,48,255					29
+ 50						160:51,1,48,255					51					80:4,0,50,64		OK
  
  
  need to block line above stairs BEFORE I get there - up steps somewhere?
@@ -100,4 +163,7 @@ line/switch etc. triggers script with tag,dist arguments
  visible stuff in drop-into room
  unblock fence at secret, reblock on going down. same logic as other lines
  
+red key -> door to second floor -> switch to lower bars to progress
 
+
+goodies in room by arachnos protecting red key.

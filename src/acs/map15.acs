@@ -27,6 +27,9 @@ script 1 (void){
 	Floor_LowerByValue(1,12,120);
 	Delay(210);
 	Floor_RaiseByValue(1,12,120);
+	
+	/* fullbright switch faces */
+	
 }
 
 script 2 (int impaledCorpsesToGo, int spawnSpotId){
@@ -106,7 +109,7 @@ script 4(int tag, int distance, int stayopen){
 	ThingSound(40,"doors/dr1_open",127);
 	//TagWait (tag);
 	
-	delay(72);	//allow time to finish
+	delay(108);	//allow time to finish
 	//print(i:stayopen);
 	//print(s:"opened door height: ",i:((GetSectorFloorZ(tag,0,0)/65536)));
 	/* only trigger if the initial height == starting height. This prevents logical errors when triggering the door again if it has not returned to the correct height  */
@@ -115,4 +118,22 @@ script 4(int tag, int distance, int stayopen){
 		ThingSound(40,"doors/dr1_clos",127);
 	}
 }
+
+script 5 (int msgindex){
+	int msgs[2] = {
+	"Blocked... Must be opened elsewhere...",
+	"This must open those bars..."
+	};
+	print(s:msgs[msgindex]);
+}
+
+/* lower bars to level 3: */
+script 6(int floorToLower,int dist,int _return){
+	Floor_LowerByValue(floorToLower,12,dist);
+	if(_return > 0){
+		Delay(210);
+		Floor_RaiseByValue(floorToLower,12,dist);
+	}
+}
+
 
