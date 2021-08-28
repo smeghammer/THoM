@@ -171,3 +171,6 @@ red key -> door to second floor -> switch to lower bars to progress
 
 
 goodies in room by arachnos protecting red key.
+
+
+array of gallows along one of the north walls, L2
