@@ -135,6 +135,10 @@ TAGS:
 
 70		upper level 3 bar access holder (along with 68)
 
+
+/* crates */
+80		large, brown
+
 100
 101
 102
