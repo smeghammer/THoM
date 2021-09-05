@@ -27,6 +27,12 @@ lineid		initial state		switcing lines (x,y)	notes
 
 5 - fullbright switch face(s)	
 
+7			0					3424,1088 (off)			fence above gnd->1st floor stairwell
+
+8			0					(centred on)1408,3136	fence on plaform
+
+9			1											railings above main stair
+
 
 OTHER LINES:
 
@@ -119,7 +125,6 @@ TAGS:
 59		movable control sector for 58
 60		?
 61		edge of second floor roof
-
 /* 'n' shaped room, 3 doors: */
 62		lh, map door sector
 63		control sector for 62, script moved.
@@ -127,21 +132,22 @@ TAGS:
 65		control sector for 64, script moved.
 66		rh, map door sector
 67		control sector for 66, script moved.
-
 68		bars to level 3
-
-
 69		computer block
-
 70		upper level 3 bar access holder (along with 68)
-
+71		megasphere secret, upper
+72		instant lower plat for spiders at (2240,2592)
+73
+74		platform/wall at top of stairs
+75		3d monster support
 
 /* crates */
 80		large, brown
+81		large, grey
 
 100
 101
-102
+102		marker behind gate to upper secret
 103
 
 door logic:
@@ -174,3 +180,30 @@ goodies in room by arachnos protecting red key.
 
 
 array of gallows along one of the north walls, L2
+
+ - fix doorless room teleport on roof 		OK
+ 
+ 
+ 6.5 steps, just too the left
+ 
+ 
+ 0000001011
+ 0001011001
+ 1100000000
+ 
+ 31 - good 
+ 48 - bad
+ 48 - bad
+ 
+ set unblocking from tele exit near lower door!!
+ 
+ 
+  - set height blocking for fence above platform at 1440,3136			OK
+  
+  
+  - red key door HOM
+  - misaligned door by fence secret
+  - nissing tex at 640,3360
+  - fences at top of stair need block/unblock logic
+ 
+ 
