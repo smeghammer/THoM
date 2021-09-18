@@ -15,7 +15,6 @@ script 100 OPEN{
 		acs_execute(3,0,blockingfences[a],1);
 		delay(1);
 	}
-	
 }
 
 
@@ -29,7 +28,6 @@ script 1 (void){
 	Floor_RaiseByValue(1,12,120);
 	
 	/* fullbright switch faces */
-	
 }
 
 script 2 (int impaledCorpsesToGo, int spawnSpotId){
