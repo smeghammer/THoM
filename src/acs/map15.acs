@@ -122,9 +122,10 @@ script 4(int tag, int distance, int stayopen){
 }
 
 script 5 (int msgindex){
-	int msgs[2] = {
+	int msgs[3] = {
 	"Blocked... Must be opened elsewhere...",
-	"This must open those bars..."
+	"This must open those bars...",
+	"Must have missed a switch back there..."
 	};
 	print(s:msgs[msgindex]);
 }
@@ -137,5 +138,38 @@ script 6(int floorToLower,int dist,int _return){
 		Floor_RaiseByValue(floorToLower,12,dist);
 	}
 }
+
+/* better scripted 3d moving platform. Move control sector 'tag' by 'distance' to simulate doors with 3D sectors. Also has a delay mapper to delay by
+correct amnt for height.
+
+This iteration uses a mapper key to remove the  need for height args */
+script 7(int tag, int mapperindex, int stayopen){
+	print(s:"new door code.");
+	int delaymapper[2][2] = {{64,108},{368,432}};
+	int counter = 0;
+	int doormove = delaymapper[mapperindex][0];
+	int doorwait = delaymapper[mapperindex][1];
+
+	print(i:doorwait);
+	/* 
+	Prevent logical door height errors:
+	 - if 'stayopen', activators MUST be s1/w1 etc.
+	 - if repeatable door, need to check initial height and prevent retrigger until returned, otherwise
+	   the door can be lowered into the floor...
+	*/
+	
+	int _controlSectorStartingHeight = (GetSectorFloorZ(tag,0,0)/65536);
+	//use the same TID for soundspot
+	floorandceiling_raisebyvalue(tag,12,doormove);
+	ThingSound(40,"doors/dr1_open",127);
+	
+	delay(doorwait);	//allow time to finish
+	/* only trigger if the initial height == starting height. This prevents logical errors when triggering the door again if it has not returned to the correct height  */
+	if(stayopen == 0 && (GetSectorFloorZ(tag,0,0)/65536) == _controlSectorStartingHeight+doormove){
+		floorandceiling_lowerbyvalue(tag,12,doormove);
+		ThingSound(40,"doors/dr1_clos",127);
+	}
+}
+
 
 

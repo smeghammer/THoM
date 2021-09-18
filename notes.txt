@@ -1,8 +1,8 @@
-NOTES:
+notes:
 
 line blocking logic:
 
-all fences initially blocked by script cll on ENTER
+all fences initially blocked by script cll on enter
 
 
 
@@ -18,7 +18,7 @@ lineid		initial state		switcing lines (x,y)	notes
 
 3			0					3488,1024 (off)			second floor fence above steps midpoint
 3			0					3488,1152 (off)			second floor fence above steps midpoint
-3			0					3488,1176 (on)			second floor fence above steps midpoint. This line needs to be active only on the steps, NOT on the floor above
+3			0					3488,1176 (on)			second floor fence above steps midpoint. this line needs to be active only on the steps, not on the floor above
 
 4			0					3456,1792 (off)			second floor fence above doorway
 4			0					2584,-264 (on)			second floor fence above doorway
@@ -35,13 +35,13 @@ lineid		initial state		switcing lines (x,y)	notes
 
 10			0					doors to room at top od stair
 
-OTHER LINES:
+other lines:
 
-ACTION		TARGET TID (tele) 
+action		target tid (tele) 
 
 
 
-TIDs
+tids
 ----
 7		3688,1632
 8		lower edge monster spawn spots (each alcove)
@@ -55,15 +55,20 @@ TIDs
 16		lower edge monster spawn spots (each alcove)
 17		lower edge monster spawn spots (each alcove)
 18		lower edge monster spawn spots (each alcove)
-40		sound thing - all scripted doors
+
 20		-2656,1440 (room by crates 2nd  level)
+
+40		sound thing(s) - all scripted doors
+
+60		tele dest by red key , accessible from red key room
+
 100		-2528,2192, -1952,2536, -3376,544, -680,3040, 552,3104, etc. (spawn lower)
 101		-3048,2464 etc (outside fence arena floor)
 
-TID				CO-ORD			
+tid				co-ord			
 ---------------------------------------------
 
-TAGS:
+tags:
 -----
 1
 2
@@ -99,11 +104,11 @@ TAGS:
 32		window upper, green brick
 33		window upper, grey bigbrick
 34		?
-35		door -> tag TID=
-36		door -> tag TID=22
+35		door -> tag tid=
+36		door -> tag tid=22
 37		?
 38		?
-39		door -> tag TID=23
+39		door -> tag tid=23
 40		?
 41		door control sector tag -> 44
 42		door control sector tag -> 45
@@ -119,7 +124,7 @@ TAGS:
 52		3d floor door frame for tags 50/51 (-2184,-1568)
 53		wall upper to hide doortrak from 52 (-2192,-1536)
 54		upper window for 2 level block (-2088,-1776)
-55		upper door frame (-1848,-1568) Needs to be roof too
+55		upper door frame (-1848,-1568) needs to be roof too
 56		upper door map sector (-1840,-1568)
 57		movable control sector for 56
 58		upper door map sector (-1840,-1568)
@@ -141,10 +146,15 @@ TAGS:
 73
 74		platform/wall at top of stairs
 75		3d monster support
-
+76		movable 3d floor for lift to top level
+77		control sector for 76
 /* crates */
 80		large, brown
 81		large, grey
+
+90		wall above switch (-1728,-1528)
+
+95		3d floor for ceiling - for transfer floorlight...
 
 100
 101
@@ -153,23 +163,23 @@ TAGS:
 
 door logic:
 line/switch etc. triggers script with tag,dist arguments
- - script moves tag CONTROL SECTOR by dist map units up/pause/down (bug here where distances get screwed if you block the door) 
- - CONTROL SECTOR line type=160 (3d floor), map sector tag, flags 48,255
+ - script moves tag control sector by dist map units up/pause/down (bug here where distances get screwed if you block the door) 
+ - control sector line type=160 (3d floor), map sector tag, flags 48,255
  
  doors:
  flags=48 because we are using map linedef for textures 
  ---------------------------------------------------------------------------------------------------------
  control sector tag		control sector lineflags		map sector tag		activator flags		status
- 38						160:35,1,48,255					35					80:4,0,38,64		OK
- 41						160:44,1,48,255					44					80:4,0,44,64		OK
- 42						160:45,1,48,255					45					80:4,0,45,64		OK
- 43						160:46,1,48,255					46					80:4,0,46,64		OK
+ 38						160:35,1,48,255					35					80:4,0,38,64		ok
+ 41						160:44,1,48,255					44					80:4,0,44,64		ok
+ 42						160:45,1,48,255					45					80:4,0,45,64		ok
+ 43						160:46,1,48,255					46					80:4,0,46,64		ok
  26						160:28,1,48,255					28
  27						160:29,1,48,255					29
- 50						160:51,1,48,255					51					80:4,0,50,64		OK
+ 50						160:51,1,48,255					51					80:4,0,50,64		ok
  
  
- need to block line above stairs BEFORE I get there - up steps somewhere?
+ need to block line above stairs before i get there - up steps somewhere?
  grey square in sky!
  visible stuff in drop-into room
  unblock fence at secret, reblock on going down. same logic as other lines
@@ -180,9 +190,9 @@ red key -> door to second floor -> switch to lower bars to progress
 goodies in room by arachnos protecting red key.
 
 
-array of gallows along one of the north walls, L2
+array of gallows along one of the north walls, l2
 
- - fix doorless room teleport on roof 		OK
+ - fix doorless room teleport on roof 		ok
  
  
  6.5 steps, just too the left
@@ -199,12 +209,39 @@ array of gallows along one of the north walls, L2
  set unblocking from tele exit near lower door!!
  
  
-  - set height blocking for fence above platform at 1440,3136			OK
+  - set height blocking for fence above platform at 1440,3136			ok
   
   
-  - red key door HOM													OK
+  - red key door hom													ok
   - misaligned door by fence secret										
-  - nissing tex at 640,3360												OK
-  - fences at top of stair need block/unblock logic						OK
+  - nissing tex at 640,3360												ok
+  - fences at top of stair need block/unblock logic						ok
  
  
+todo:
+ - check linedef orientation on secret teleporter
+ - check lighting under eaves
+ - remove debug messages
+ - add wall lighting vertical strips internally and shade appropriately
+ - make big bit after red bars and climbing the wall, a secret (determine best route to top as well)
+ - retexture or make new wall line in room at top of stairs. y offsetting screws up either the fence (midtext at top) or the bigbrik (wall in room)
+ - textures - make a narrow metal panel with light at bottom (for room doors at top of big stair)
+ - add switch in this room to open the main door to l2 (forcing yuo to be chaingunned...)
+ - indicate passage to next level:
+     - 
+	 
+ - add lift to drop down secret withbars on 1st floor
+ -can't get out of sw quadrant, level 2!!
+ - missed a l1 spawn point brightness
+ - correct blocking for outer fence if i get in from top of drop-in secret chamber!!!
+ - add sound for platform, and corresponding thing. repeat? Add to array as 3rd/4th item (sndstring,thing)
+ - teleport back to bars?
+ - another layer of roof that does not have lighting effects show through?
+ - walls that open on going back for red key...
+ 
+ 
+ set up hint for red key:
+ ------------------------
+  - add switch in room next to red key door to open other end - that way, we are forced to see the  red door. also, add a s1 message at end (s1, and put tex/indicator by door as well as a msg linedef)
+  
+  
