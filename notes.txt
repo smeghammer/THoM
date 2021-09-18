@@ -33,6 +33,7 @@ lineid		initial state		switcing lines (x,y)	notes
 
 9			1											railings above main stair
 
+10			0					doors to room at top od stair
 
 OTHER LINES:
 
@@ -201,9 +202,9 @@ array of gallows along one of the north walls, L2
   - set height blocking for fence above platform at 1440,3136			OK
   
   
-  - red key door HOM
-  - misaligned door by fence secret
-  - nissing tex at 640,3360
-  - fences at top of stair need block/unblock logic
+  - red key door HOM													OK
+  - misaligned door by fence secret										
+  - nissing tex at 640,3360												OK
+  - fences at top of stair need block/unblock logic						OK
  
  
