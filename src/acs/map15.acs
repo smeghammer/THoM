@@ -15,6 +15,14 @@ script 100 OPEN{
 		acs_execute(3,0,blockingfences[a],1);
 		delay(1);
 	}
+	
+	/* align tele gates */
+	int offsetInt = 16;
+	//int offsetFixed = myCoolInteger << 16; //Result is 4718592
+	//see https://zdoom.org/wiki/Fixed_point_number
+	log(s:"aligning teleport gate ",i:82);
+	//Sector_SetFloorPanning(82,offsetInt << 16,0,offsetInt << 16,0);
+	Sector_SetFloorPanning(82,offsetInt,0,offsetInt,0);
 }
 
 
@@ -140,32 +148,55 @@ script 6(int floorToLower,int dist,int _return){
 /* better scripted 3d moving platform. Move control sector 'tag' by 'distance' to simulate doors with 3D sectors. Also has a delay mapper to delay by
 correct amnt for height.
 
-This iteration uses a mapper key to remove the  need for height args */
+This iteration uses a mapper key to remove the  need for height args
+also, see https://github.com/rheit/zdoom/blob/master/wadsrc/static/filter/game-doomchex/sndinfo.txt
+ */
 script 7(int tag, int mapperindex, int stayopen){
-	print(s:"new door code.");
 	int delaymapper[2][2] = {{64,108},{368,432}};
 	int counter = 0;
 	int doormove = delaymapper[mapperindex][0];
-	int doorwait = delaymapper[mapperindex][1];
 
-	print(i:doorwait);
-	/* 
-	Prevent logical door height errors:
+	int doorwait = 36;
+	/* Prevent logical door height errors:
 	 - if 'stayopen', activators MUST be s1/w1 etc.
 	 - if repeatable door, need to check initial height and prevent retrigger until returned, otherwise
-	   the door can be lowered into the floor...
-	*/
+	   the door can be lowered into the floor... */
 	
 	int _controlSectorStartingHeight = (GetSectorFloorZ(tag,0,0)/65536);
 	//use the same TID for soundspot
 	floorandceiling_raisebyvalue(tag,12,doormove);
-	ThingSound(40,"doors/dr1_open",127);
 	
+	/* use lift sound if tall platform */
+	str _sound_open = "doors/dr1_open";
+	str _sound_mid = "";
+	str _sound_close = "doors/dr1_clos";
+	if(mapperindex == 1){	//tall
+		_sound_open = "plats/pt1_strt";
+		_sound_close = "plats/pt1_stop";
+		_sound_mid = "plats/pt1_mid";
+	}
+
+	ThingSound(40,_sound_open,127);
+	if(mapperindex == 1){
+		ThingSound(40,_sound_mid,127);
+		TagWait(tag);
+		ThingSound(40,_sound_close,127);
+	}
+	/* wait for action to complete */
+	TagWait(tag);
 	delay(doorwait);	//allow time to finish
 	/* only trigger if the initial height == starting height. This prevents logical errors when triggering the door again if it has not returned to the correct height  */
 	if(stayopen == 0 && (GetSectorFloorZ(tag,0,0)/65536) == _controlSectorStartingHeight+doormove){
 		floorandceiling_lowerbyvalue(tag,12,doormove);
-		ThingSound(40,"doors/dr1_clos",127);
+		if(mapperindex == 1){
+			ThingSound(40,_sound_open,127);
+			PlaySound(40,_sound_mid,127,1,true,1,0);
+			TagWait(tag);
+			ThingSound(40,_sound_close,127);
+		}
+		else{
+			ThingSound(40,_sound_close,127);
+		}
 	}
 }
 

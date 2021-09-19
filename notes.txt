@@ -152,9 +152,14 @@ tags:
 80		large, brown
 81		large, grey
 
+82		tele dest by red key , accessible from red key room
+
 90		wall above switch (-1728,-1528)
 
+
 95		3d floor for ceiling - for transfer floorlight...
+96		bars at -2016,128
+
 
 100
 101
@@ -218,7 +223,7 @@ array of gallows along one of the north walls, l2
   - fences at top of stair need block/unblock logic						ok
  
  
-todo:
+todo (added ass GH issues 19/09/21):
  - check linedef orientation on secret teleporter
  - check lighting under eaves
  - remove debug messages

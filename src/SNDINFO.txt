@@ -1,5 +1,5 @@
 ; MAP MUSIC:
-BBLUES		BBLUES.mid
+// BBLUES		BBLUES.mid
 
 
 glass/break   DSGLASS
