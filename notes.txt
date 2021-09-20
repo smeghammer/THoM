@@ -251,4 +251,4 @@ todo (added ass GH issues 19/09/21):
  ------------------------
   - add switch in room next to red key door to open other end - that way, we are forced to see the  red door. also, add a s1 message at end (s1, and put tex/indicator by door as well as a msg linedef)
   
-  
+  second from top floor - grade floor from stome to red stone as get closer to secret area. Also, make grey brick rooms in NON secret areas
