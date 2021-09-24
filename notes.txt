@@ -154,6 +154,8 @@ tags:
 
 82		tele dest by red key , accessible from red key room
 
+83		control sector for big door at top of stair (uses same door code as elsewhere)
+
 90		wall above switch (-1728,-1528)
 
 
@@ -167,6 +169,12 @@ tags:
 
 more
 103
+104		upper ceiling and bigdoor
+
+
+//test
+0x1		
+
 
 door logic:
 line/switch etc. triggers script with tag,dist arguments
