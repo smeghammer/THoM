@@ -262,3 +262,16 @@ todo (added ass GH issues 19/09/21):
   second from top floor - grade floor from stome to red stone as get closer to secret area. Also, make grey brick rooms in NON secret areas
 
 moved to alienware
+
+
+09:33 25/09/2021
+ - align lights under windows				OK
+ - realign bricks on other side of these walls
+ - make switch at 1248,-2784 actually do something!!
+ - l2 buildings doorframe				OK
+ - finish l3 building structures
+
+
+
+
+
