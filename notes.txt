@@ -155,6 +155,8 @@ tags:
 82		tele dest by red key , accessible from red key room
 
 83		control sector for big door at top of stair (uses same door code as elsewhere)
+84		tag of control sector controlling 3D door at 1040,-1760
+85		tag of control sector controlling 3D door at 1424,-1704
 
 90		wall above switch (-1728,-1528)
 
@@ -171,6 +173,13 @@ more
 103
 104		upper ceiling and bigdoor
 
+see:
+https://forum.zdoom.org/viewtopic.php?f=3&t=52170
+"In Hexen format, the resulting tag is calculated as tag + 256*hi-tag." - Graf Zahl
+257 / 1,255	control sector: (352,-328)
+258 / 2,255	control sector: (360,-328). Red rooms Windows
+259 / 3,255	control sector: (360,-328). RTewd room doorframes upper
+260		control sector: (360,-328). door
 
 //test
 0x1		
