@@ -23,9 +23,11 @@ lineid		initial state		switcing lines (x,y)	notes
 4			0					3456,1792 (off)			second floor fence above doorway
 4			0					2584,-264 (on)			second floor fence above doorway
 
+
+
 6			1					3424,544 (off)			fence above drop-in secret
 
-5 - fullbright switch face(s)	
+5 - fullbright switch face(s) etc.	
 
 7			0					3424,1088 (off)			fence above gnd->1st floor stairwell
 
@@ -34,6 +36,8 @@ lineid		initial state		switcing lines (x,y)	notes
 9			1											railings above main stair
 
 10			0					doors to room at top od stair
+
+11 - fullbright lower	
 
 other lines:
 
@@ -63,7 +67,7 @@ tids
 60		tele dest by red key , accessible from red key room
 
 100		-2528,2192, -1952,2536, -3376,544, -680,3040, 552,3104, etc. (spawn lower)
-101		-3048,2464 etc (outside fence arena floor)
+101		-3048,2464 etc (outside fence arena floor), steps at 0,2048
 
 tid				co-ord			
 ---------------------------------------------
@@ -157,12 +161,17 @@ tags:
 83		control sector for big door at top of stair (uses same door code as elsewhere)
 84		tag of control sector controlling 3D door at 1040,-1760
 85		tag of control sector controlling 3D door at 1424,-1704
+86		lava path l3
+87		blocks above lava path/transfer floor light
+88		blocks above lava path (no floorlight)
+
 
 90		wall above switch (-1728,-1528)
 
 
 95		3d floor for ceiling - for transfer floorlight...
 96		bars at -2016,128
+97		door upper, L3 building @-664, -2064
 
 
 100
@@ -172,6 +181,14 @@ tags:
 more
 103
 104		upper ceiling and bigdoor
+105		roof
+106		roof lights
+107		l3 bridge trap wall
+
+110		iron door, L3
+111		iron door control sector, movable
+112		pillars blocking L3 imp trap behind broken building @-1984, -1216
+
 
 see:
 https://forum.zdoom.org/viewtopic.php?f=3&t=52170
@@ -281,6 +298,6 @@ moved to alienware
  - finish l3 building structures
 
 
+ - door roofs needed! These are the movable sectors with > 256 tags
 
-
-
+ - make various trigger lines activate monbster traps - old sckool!!
