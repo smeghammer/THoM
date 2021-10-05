@@ -152,22 +152,24 @@ tags:
 75		3d monster support
 76		movable 3d floor for lift to top level
 77		control sector for 76
+
+
+78		support columns for monsters/goodies on top of l3 walkway
+
+
 /* crates */
 80		large, brown
 81		large, grey
-
 82		tele dest by red key , accessible from red key room
-
 83		control sector for big door at top of stair (uses same door code as elsewhere)
 84		tag of control sector controlling 3D door at 1040,-1760
 85		tag of control sector controlling 3D door at 1424,-1704
 86		lava path l3
 87		blocks above lava path/transfer floor light
 88		blocks above lava path (no floorlight)
-
-
+89		top of gate above sprite pillars
 90		wall above switch (-1728,-1528)
-
+91		barrier by lift to top floor
 
 95		3d floor for ceiling - for transfer floorlight...
 96		bars at -2016,128
@@ -301,3 +303,4 @@ moved to alienware
  - door roofs needed! These are the movable sectors with > 256 tags
 
  - make various trigger lines activate monbster traps - old sckool!!
+ - need exit from hallway behind wall at 224,2464
