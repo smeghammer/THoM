@@ -64,6 +64,27 @@ tids
 
 40		sound thing(s) - all scripted doors
 
+41		spawnspot, upper	OK
+42		spawnspot, upper	OK
+43		spawnspot, upper	OK
+44		spawnspot, upper	OK
+45		spawnspot, upper	OK
+46		spawnspot, upper	OK
+47		spawnspot, upper
+48		spawnspot, upper
+49		spawnspot, upper
+
+50		thing to remove (41)	OK
+51		thing to remove (42)	OK
+52		thing to remove (43)	OK
+53		thing to remove (44)	OK
+54		thing to remove (45)	OK
+55		thing to remove (46)	OK
+56		thing to remove (47)
+57		thing to remove (48)
+58		thing to remove (49)
+
+
 60		tele dest by red key , accessible from red key room
 
 100		-2528,2192, -1952,2536, -3376,544, -680,3040, 552,3104, etc. (spawn lower)
