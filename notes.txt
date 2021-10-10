@@ -193,6 +193,8 @@ tags:
 90		wall above switch (-1728,-1528)
 91		barrier by lift to top floor
 
+92		final bars by exit
+
 95		3d floor for ceiling - for transfer floorlight...
 96		bars at -2016,128
 97		door upper, L3 building @-664, -2064
