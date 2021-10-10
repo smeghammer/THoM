@@ -156,6 +156,7 @@ tags:
 
 78		support columns for monsters/goodies on top of l3 walkway
 
+79		platform at -2384,-736
 
 /* crates */
 80		large, brown
@@ -174,8 +175,8 @@ tags:
 95		3d floor for ceiling - for transfer floorlight...
 96		bars at -2016,128
 97		door upper, L3 building @-664, -2064
-
-
+98		secret door at 1192,-2776
+99		drop doors at -1928,2256
 100
 101
 102		marker behind gate to upper secret
@@ -304,3 +305,14 @@ moved to alienware
 
  - make various trigger lines activate monbster traps - old sckool!!
  - need exit from hallway behind wall at 224,2464
+
+ - check blocking of line(s) behind stairs of first set of steps!	
+ - stray bright sector on crates by baron room (before roof walkway)
+
+ - something needed in RED ROOMS to trigger something at the top - currently, you can get up without visitingthis section
+ - fence align at cyberimp trap
+ - need some F_SKY1 ceilings!!
+
+ - swap switch at -2184,744 to open red L3 area (need to close it!)	OK	
+ - and add a switch THERE to drop the lift barrier)			OK
+ - new switych in BARON room on other side				OK
