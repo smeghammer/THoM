@@ -33,4 +33,5 @@ texturegroup - "OTHER"
 texture - TRANSP01
 texture - TRANSP02
 texture h WOODMET6
+texture h WOODMET7
 texture t METAL8

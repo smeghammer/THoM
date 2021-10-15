@@ -339,3 +339,13 @@ moved to alienware
  - swap switch at -2184,744 to open red L3 area (need to close it!)	OK	
  - and add a switch THERE to drop the lift barrier)			OK
  - new switych in BARON room on other side				OK
+
+ - stuff in drop-in box next to iron grid corridor			OK
+ - switch in baron room doesn't do anything!				OK
+ - more monsters in open spaces						OK
+ - more barriers?
+ - bottom monster spawn spots change exit direction (and check others)
+ - imp at top of stair on RHS as going up - stuck in wall
+ - more monsters in green rooms (first encountered)
+ - shotgun guys stuch in 3rd green room - LOTS!!
+ - unknown things in 4th room!!						OK
