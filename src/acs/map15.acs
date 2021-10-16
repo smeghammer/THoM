@@ -20,9 +20,8 @@ script 100 OPEN{
 	int offsetInt = 16;
 	//int offsetFixed = myCoolInteger << 16; //Result is 4718592
 	//see https://zdoom.org/wiki/Fixed_point_number
-	log(s:"aligning teleport gate ",i:82);
-	//Sector_SetFloorPanning(82,offsetInt << 16,0,offsetInt << 16,0);
 	Sector_SetFloorPanning(82,offsetInt,0,offsetInt,0);
+	Sector_SetFloorPanning(69,offsetInt,0,offsetInt,0);
 }
 
 
@@ -41,9 +40,9 @@ script 1 (void){
 script 2 (int impaledCorpsesToGo, int spawnSpotId,int spawntype){
 	/* remove the impaled corpses: */
 	Thing_Remove(impaledCorpsesToGo);
-	print(s:"remove corpses: ",i:impaledCorpsesToGo);
+	/*print(s:"remove corpses: ",i:impaledCorpsesToGo);
 	print(s:"spawn at: ",i:spawnSpotId);
-	print(s:"spawn type: ",i:spawntype);
+	print(s:"spawn type: ",i:spawntype);*/
 	
 	/* TEST - Replace with a randomised monster (get stronger as progress?) at relevant spawnspot */
 	int thingsToSpawn[4] = {T_ZOMBIE,T_IMP,T_SHOTGUY,T_CHAINGUY};
@@ -61,7 +60,7 @@ script 2 (int impaledCorpsesToGo, int spawnSpotId,int spawntype){
 	}
 	
 	/* finally, remove the specified spawnspot so we don't retrigger */
-	print(s:"removing spawn spot #",i:spawnSpotId);
+	/* print(s:"removing spawn spot #",i:spawnSpotId); */
 	Thing_Remove(spawnSpotId);
 	
 	/* TODO: have multiple lines that trigger release of staked corpses - have counter on a complex array to
@@ -70,15 +69,15 @@ script 2 (int impaledCorpsesToGo, int spawnSpotId,int spawntype){
 
 /* steps and roof line blocking logic */
 script 3 (int lineid, int blockingstate,int checkheightmapid){
-	log(s:"blockingstate", i:blockingstate);
-	print(s:"Player height: ",i:GetActorZ(0)/65536);
+	/* log(s:"blockingstate", i:blockingstate);
+	print(s:"Player height: ",i:GetActorZ(0)/65536); */
 	int heightcheckmap[3] = {0,-1012,-840};
 	
 	/* if activeheight is passed, we test actor height and only allow the line blocking toggle to run if the user is at this height (=/-16) */
 	int checkHeight = 1;
 	if(checkheightmapid > 0){	/* some lines don't need testing */
 		delay(1);
-		print(s:"checking height:",i:GetActorZ(0)/65536);
+		/* print(s:"checking height:",i:GetActorZ(0)/65536); */
 		//delay(1);
 		//print(s:"height: ",i:(GetActorZ(0)/65536));
 		//delay(1);
@@ -92,7 +91,7 @@ script 3 (int lineid, int blockingstate,int checkheightmapid){
 			(GetActorZ(0)/65536) >= heightcheckmap[checkheightmapid] - 32
 			){
 		//if(  (heightcheckmap[checkheightmapid] - 32) <= (GetActorZ(0)/65536) <= (heightcheckmap[checkheightmapid] + 32) ){
-			print(s:"unblock");
+			/* print(s:"unblock"); */
 			checkHeight = 1;
 		}
 		//else{
@@ -104,13 +103,13 @@ script 3 (int lineid, int blockingstate,int checkheightmapid){
 	
 	if(checkHeight == 1){
 		if(blockingstate == 1){
-			print(s:"blocking line ",i:lineid);
+			/* print(s:"blocking line ",i:lineid); */
 			//Line_SetBlocking(lineid,32,0);	all
 			Line_SetBlocking(lineid,64,0);
 		}
 		else{
 			/* unblock */
-			print(s:"unblocking line ",i:lineid);
+			/* print(s:"unblocking line ",i:lineid); */
 			//Line_SetBlocking(lineid,0,32);	//all
 			Line_SetBlocking(lineid,0,64);		//mid
 		}

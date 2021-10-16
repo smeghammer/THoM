@@ -346,6 +346,15 @@ moved to alienware
  - more barriers?
  - bottom monster spawn spots change exit direction (and check others)
  - imp at top of stair on RHS as going up - stuck in wall
- - more monsters in green rooms (first encountered)
- - shotgun guys stuch in 3rd green room - LOTS!!
+ - more monsters in green rooms (first encountered)			OK
+ - shotgun guys stuch in 3rd green room - LOTS!!			OK
  - unknown things in 4th room!!						OK
+
+
+ - fence is passable at top over lava stream
+ - mancubus is stuck in secreat area					OK
+ - switch for final lift bvlocker (baron room) doesn't work!!		OK
+
+
+ - make lava damaging
+ - add exit lines
